@@ -1,9 +1,5 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
-package ca.sheridancollege.project;
+//Daniel O'Brien - Anne Cho - Group Project - 3/5/2022
+package com.company;
 
 /**
  * A class that models each Player in the game. Players have an identifier, which should be unique.
