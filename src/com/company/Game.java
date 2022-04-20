@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class Game {
 
-    public ArrayList<Card> userDeck;
-    public ArrayList<Card> aiDeck;
 
     public void play() {
 

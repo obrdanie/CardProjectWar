@@ -7,6 +7,10 @@ public class Main {
         test.createDeck();
         test.printMainDeck();
         test.shuffle();
-        test.printMainDeck();
+        System.out.println("");
+        test.splitDeck();
+        test.printUserDeck();
+        System.out.println("");
+        test.printAiDeck();
     }
 }

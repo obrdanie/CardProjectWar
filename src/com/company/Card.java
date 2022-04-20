@@ -27,6 +27,11 @@ public class Card {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return (this.suit + " " + this.value);
+    }
+
 
 
 }
