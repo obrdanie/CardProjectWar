@@ -1,51 +1,33 @@
 //Daniel O'Brien - Anne Cho - Group Project - 3/5/2022
 package com.company;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
- *
- * @author dancye
- * @author Paul Bonenfant Jan 2020
- */
 public class GroupOfCards {
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
 
-    public GroupOfCards(int size) {
-        this.size = size;
-    }
+    String[] suit = {"Spades", "Diamond", "Clubs", "Hearts"};
+    int[] value = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+    ArrayList<Card> mainDeck;
+    ArrayList<Card> userDeck;
+    ArrayList<Card> aiDeck;
 
-    /**
-     * A method that will get the group of cards as an ArrayList
-     *
-     * @return the group of cards.
-     */
-    public ArrayList<Card> getCards() {
-        return cards;
+    int counter = 0;
+    public void createDeck() {
+        for (int i = 0; i < suit.length; i++) {
+            for (int e = 0; e < value.length; e++) {
+                Card newCard = new Card(suit[i], value[e]);
+                mainDeck.add(counter, newCard);
+                counter++;
+            }
+        }
     }
 
     public void shuffle() {
-        Collections.shuffle(cards);
+        Collections.shuffle(mainDeck);
     }
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
-    }
-
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
-    }
 
 }//end class
