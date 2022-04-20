@@ -8,11 +8,9 @@ import java.util.Collections;
 public class GroupOfCards {
 
 
-    String[] suit = {"Spades", "Diamond", "Clubs", "Hearts"};
-    int[] value = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-    ArrayList<Card> mainDeck;
-    ArrayList<Card> userDeck;
-    ArrayList<Card> aiDeck;
+    private String[] suit = {"Spades", "Diamond", "Clubs", "Hearts"};
+    private int[] value = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+    public ArrayList<Card> mainDeck = new ArrayList<Card>();
 
     int counter = 0;
     public void createDeck() {
@@ -28,6 +26,13 @@ public class GroupOfCards {
     public void shuffle() {
         Collections.shuffle(mainDeck);
     }
+
+    public void printMainDeck() {
+        for (int i = 0; i < mainDeck.size(); i++) {
+            System.out.println(mainDeck.get(i).getSuit() + " " + mainDeck.get(i).getValue());
+        }
+    }
+
 
 
 }//end class

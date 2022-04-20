@@ -2,9 +2,13 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Game {
+
+    public ArrayList<Card> userDeck;
+    public ArrayList<Card> aiDeck;
 
     public void play() {
 
