@@ -42,28 +42,27 @@ public class GroupOfCards {
         if (userDeck.get(0).getValue() < aiDeck.get(0).getValue()) {
             printRound(0);
             System.out.println("AI Win's Round");
-            Card userCard = new Card(userDeck.get(0).getSuit(), userDeck.get(0).getValue());
-            Card aiCard = new Card(aiDeck.get(0).getSuit(), aiDeck.get(0).getValue());
-            aiDeck.add(userCard);
-            userDeck.remove(0);
-            aiDeck.remove(0);
-            aiDeck.add(aiCard);
+            addValue(userDeck, aiDeck);
         }
         else if (userDeck.get(0).getValue() > aiDeck.get(0).getValue()) {
             printRound(0);
             System.out.println("User Wins Round");
-            Card aiCard = new Card(aiDeck.get(0).getSuit(), aiDeck.get(0).getValue());
-            Card userCard = new Card(userDeck.get(0).getSuit(), userDeck.get(0).getValue());
-            userDeck.add(aiCard);
-            aiDeck.remove(0);
-            userDeck.remove(0);
-            userDeck.add(userCard);
+            addValue(aiDeck, userDeck);
         }
         else if (userDeck.get(0).getValue() == aiDeck.get(0).getValue()) {
             printRound(0);
             System.out.println("Tie Round");
             tieRound();
         }
+    }
+
+    private void addValue(ArrayList<Card> userDeck, ArrayList<Card> aiDeck) {
+        Card userCard = new Card(userDeck.get(0).getSuit(), userDeck.get(0).getValue());
+        Card aiCard = new Card(aiDeck.get(0).getSuit(), aiDeck.get(0).getValue());
+        aiDeck.add(userCard);
+        userDeck.remove(0);
+        aiDeck.remove(0);
+        aiDeck.add(aiCard);
     }
 
     public void tieRound() {
