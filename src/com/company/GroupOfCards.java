@@ -1,7 +1,6 @@
 //Daniel O'Brien - Anne Cho - Group Project - 3/5/2022
 package com.company;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -41,21 +40,27 @@ public class GroupOfCards {
 
     public void calculateRound() {
         if (userDeck.get(0).getValue() < aiDeck.get(0).getValue()) {
-            printRound();
+            printRound(0);
             System.out.println("AI Win's Round");
             Card userCard = new Card(userDeck.get(0).getSuit(), userDeck.get(0).getValue());
+            Card aiCard = new Card(aiDeck.get(0).getSuit(), aiDeck.get(0).getValue());
             aiDeck.add(userCard);
             userDeck.remove(0);
+            aiDeck.remove(0);
+            aiDeck.add(aiCard);
         }
         else if (userDeck.get(0).getValue() > aiDeck.get(0).getValue()) {
-            printRound();
+            printRound(0);
             System.out.println("User Wins Round");
             Card aiCard = new Card(aiDeck.get(0).getSuit(), aiDeck.get(0).getValue());
+            Card userCard = new Card(userDeck.get(0).getSuit(), userDeck.get(0).getValue());
             userDeck.add(aiCard);
             aiDeck.remove(0);
+            userDeck.remove(0);
+            userDeck.add(userCard);
         }
         else if (userDeck.get(0).getValue() == aiDeck.get(0).getValue()) {
-            printRound();
+            printRound(0);
             System.out.println("Tie Round");
             tieRound();
         }
@@ -65,7 +70,10 @@ public class GroupOfCards {
         int i = 0;
         while (true) {
             i += 3;
+            System.out.println("Flipping 3 cards...\n");
             if (userDeck.get(i).getValue() < aiDeck.get(i).getValue()) {
+                printRound(i);
+                System.out.println("AI Win's Round");
                 while (i != 0) {
                     Card userCard = new Card(userDeck.get(i).getSuit(), userDeck.get(i).getValue());
                     aiDeck.add(userCard);
@@ -74,7 +82,9 @@ public class GroupOfCards {
                 }
                 break;
             }
-            else if(userDeck.get(0).getValue() > aiDeck.get(0).getValue()) {
+            else if(userDeck.get(i).getValue() > aiDeck.get(i).getValue()) {
+                printRound(i);
+                System.out.println("User Wins Round");
                 while (i != 0) {
                     Card aiCard = new Card(aiDeck.get(i).getSuit(), aiDeck.get(i).getValue());
                     userDeck.add(aiCard);
@@ -83,13 +93,26 @@ public class GroupOfCards {
                 }
                 break;
             }
+            printRound(i);
         }
     }
 
-    public void printRound() {
-        System.out.println(userDeck.toString());
+    public void printRound(int index) {
+        System.out.println("");
+        System.out.print("User: ");
+        System.out.println(userDeck.get(index).getSuit() + " " + userDeck.get(index).getValue());
         System.out.println("vs");
-        System.out.println(aiDeck.toString());
+        System.out.print("AI: ");
+        System.out.println(aiDeck.get(index).getSuit() + " " + aiDeck.get(index).getValue());
+        System.out.println("");
+    }
+
+    public boolean getUserEmpty() {
+        return userDeck.isEmpty();
+    }
+
+    public boolean getAiEmpty() {
+        return aiDeck.isEmpty();
     }
 
     //These methods were used for testing purposes only
