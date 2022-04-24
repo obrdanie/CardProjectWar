@@ -3,14 +3,17 @@ package com.company;
 
 
 public class Card {
+    //Instance fields of card class
     private String suit;
     private int value;
 
+    //Card constructor
     public Card(String suit, int value) {
         this.suit = suit;
         this.value = value;
     }
 
+    //Getters and setters for fields
     public String getSuit() {
         return suit;
     }
@@ -27,6 +30,7 @@ public class Card {
         this.value = value;
     }
 
+    //toString overriding
     @Override
     public String toString() {
         return (this.suit + " " + this.value);

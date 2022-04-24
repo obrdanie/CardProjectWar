@@ -5,12 +5,15 @@ package com.company;
 public class Player {
 
 
+    //Instance field to store the name
     private String name;
 
+    //Creates the player constructor
     public Player(String name) {
         this.name = name;
     }
 
+    //Getter and setter for the name field
     public String getName() {
         return name;
     }

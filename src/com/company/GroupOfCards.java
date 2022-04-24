@@ -7,13 +7,18 @@ import java.util.Collections;
 public class GroupOfCards {
 
 
+    //suit and value arrays that are used to create Card objects
     private String[] suit = {"Spades", "Diamond", "Clubs", "Hearts"};
     private int[] value = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+
+    //ArrayList that initiates the mainDeck, userDeck and aiDeck
     public ArrayList<Card> mainDeck = new ArrayList<>();
     public ArrayList<Card> userDeck = new ArrayList<>();
     public ArrayList<Card> aiDeck = new ArrayList<>();
 
+    //counts the indexes for the deck
     int counter = 0;
+    //function that creates the deck and adds the card objects to it
     public void createDeck() {
         for (int i = 0; i < suit.length; i++) {
             for (int e = 0; e < value.length; e++) {
@@ -24,10 +29,12 @@ public class GroupOfCards {
         }
     }
 
+    //shuffles the main deck
     public void shuffle() {
         Collections.shuffle(mainDeck);
     }
 
+    //splits the main deck into the user and ai deck
     public void splitDeck() {
         for (int i = 0; i < mainDeck.size(); i++) {
             Card userCard = new Card(mainDeck.get(i).getSuit(), mainDeck.get(i).getValue());
@@ -38,6 +45,7 @@ public class GroupOfCards {
         }
     }
 
+    //Calculates the round of who won the round
     public void calculateRound() {
         if (userDeck.get(0).getValue() < aiDeck.get(0).getValue()) {
             printRound(0);
@@ -56,6 +64,7 @@ public class GroupOfCards {
         }
     }
 
+    //the function that distributes the cards to the respective decks
     private void addValue(ArrayList<Card> userDeck, ArrayList<Card> aiDeck) {
         Card userCard = new Card(userDeck.get(0).getSuit(), userDeck.get(0).getValue());
         Card aiCard = new Card(aiDeck.get(0).getSuit(), aiDeck.get(0).getValue());
@@ -65,6 +74,7 @@ public class GroupOfCards {
         aiDeck.add(aiCard);
     }
 
+    //a function that calculates if the round tied.
     public void tieRound() {
         int i = 0;
         while (true) {
@@ -106,6 +116,7 @@ public class GroupOfCards {
         System.out.println("");
     }
 
+    //boolean statements that return if the users decks are empty. If they are, the opposite player won
     public boolean getUserEmpty() {
         return userDeck.isEmpty();
     }
@@ -132,7 +143,4 @@ public class GroupOfCards {
 //            System.out.println(aiDeck.get(i).getSuit() + " " + aiDeck.get(i).getValue());
 //        }
 //    }
-
-
-
 }//end class
